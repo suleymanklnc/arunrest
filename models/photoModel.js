@@ -17,6 +17,17 @@ const photoSchema = new Schema({
         type: Date,
         default: Date.now,
     },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+    },
+    url : {
+        type: String,
+        required: true,
+    },
+    image_id: {
+          type: String,
+    },
 });
 
 

@@ -4,7 +4,7 @@
    <body class="main-layout inner_page">
       <!-- loader  -->
       <div class="loader_bg">
-         <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+         <div class="loader"><img src="images\loading2.gif" alt="#" /></div>
       </div>
       <!-- end loader -->
 
@@ -27,13 +27,14 @@
 
 
                      <% for (photo of photos){ %>
+                    
 
                         <div class="col-lg-4 col-md-6 ma_bottom30">
                            <div class="lightbox">
-                              <img src="images/g1.jpg" alt="bridge">
+                              <img src="<%= photo.url %>" alt="<%= photo.name %>">
                               <div class="view_main">
                                  <div class="pose">
-                                    <a class="read_more" href="/photos/<%= photo._id %>"><img src="images/ga.png"
+                                    <a class="read_more" href="/photos/<%= photo._id %>"><img src="/images/ga.png"
                                           alt="#"></a>
                                     <h3 style="padding-top: 10px; padding-bottom: 10px;">
                                        <%= photo.name %>

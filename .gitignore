@@ -1,5 +1,45 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+package-lock.json
+
+# Dependency directories
+pids
+logs
+results
+
+# Editor-specific
+.vscode/
+.idea/
+
+# Mac-specific
+.DS_Store
+
+# Windows-specific
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Compiled files
+*.log
+*.pid
+*.out
+
+# Project-specific
+/dist
+/build
+/coverage
+
+# API keys and secrets
+/config.js
+/secrets/
+
 # Created by https://www.toptal.com/developers/gitignore/api/node
 # Edit at https://www.toptal.com/developers/gitignore?templates=node
+
 
 ### Node ###
 # Logs
