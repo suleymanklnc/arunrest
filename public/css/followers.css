@@ -1,0 +1,126 @@
+.followersbody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+}
+
+.followerscontainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1200px;
+}
+
+.followerscard {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.followerscard-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.followersuser-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.followersuser-name {
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+
+.followersphoto-card {
+  margin-top: 10px;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}
+
+.followersphoto-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.followersphoto-description {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #777;
+}
+
+
+
+
+/* Genel stil ayarları */
+.postsbody {
+    
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  .postscontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+  
+  .postscard {
+    width: 300px;
+    margin: 15px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+  
+  .postscard:hover {
+    transform: scale(1.02);
+  }
+  
+  .postscard-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .postsuser-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .postsuser-name {
+    font-size: 18px;
+    font-family: sans-serif;
+    font-weight: bolder;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .postscard-image {
+    width: 100%;
+    height: auto;
+  }
+
+
+
+
+
+

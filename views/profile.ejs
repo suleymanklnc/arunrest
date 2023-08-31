@@ -1,0 +1,77 @@
+<%- include("partials/_header") %>
+
+   <!-- body -->
+
+
+
+
+
+   <body style="background-color: #d8d8d8;">
+
+      <div class="infocard-container">
+
+         <div class="info-card">
+            <div class="info-header">
+               <img class="profile-image" src="https://ca.slack-edge.com/T48AYQJ6B-U48AYQJET-4b4ae88ea351-1024"
+                  alt="Profile Image">
+               <h1 class="profile-username">
+                  <%= user.username %>
+               </h1>
+            </div>
+            <div class="info-content">
+               <div class="info-property">
+                  <span class="property-name">Name:</span>
+                  <span class="property-value">
+                     <%= user.itsname %>
+                  </span>
+               </div>
+               <div class="info-property">
+                  <span class="property-name">Surname:</span>
+                  <span class="property-value">
+                     <%= user.itssurname %>
+                  </span>
+               </div>
+               <div class="info-property">
+                  <span class="property-name">E-mail:</span>
+                  <span class="property-value">
+                     <%= user.email %>
+                  </span>
+               </div>
+               <div class="info-property">
+                  <span class="property-name">Followings:</span>
+                  <span class="property-value">
+                     <%= numOfFollowers %>
+                  </span>
+               </div>
+               <div class="info-property">
+                  <span class="property-name">Followers:</span>
+                  <span class="property-value">
+                     <%= numOfFollowings %>
+                  </span>
+               </div>
+               <div class="info-property">
+                  <span class="property-name">Enjoyed:</span>
+                  <span class="property-value">
+                     <%= user.createdAt %>
+                  </span>
+               </div>
+            </div>
+         </div>
+
+       
+
+
+      </div>
+
+      
+
+      
+     
+
+
+
+
+
+   </body>
+
+   </html>

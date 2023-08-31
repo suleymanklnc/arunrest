@@ -1,0 +1,9 @@
+.photoscontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: #f5f5f5;
+}

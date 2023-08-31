@@ -1,0 +1,433 @@
+.cntnr {
+  background-color: transparent;
+}
+
+/*-----------------CONTACT ME BAŞLANGICI-------------------*/
+
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500&display=swap");
+
+.container {
+  display: flex;
+  grid-template-columns: 200px 200px 200px;
+  grid-gap: 50px;
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
+  background-color: #222831;
+  font-family: "Baloo Paaji 2", cursive;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: #222831;
+  height: 30rem;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.7);
+  color: white;
+  flex-wrap: wrap;
+  margin-top: 120px;
+  margin-bottom: 120px;
+  padding-top: 3rem;
+}
+
+.card__name {
+  margin-top: 15px;
+  font-size: 1.5em;
+}
+
+.card__image {
+  height: 140px;
+  width: 140px;
+  border-radius: 50%;
+  border: 5px solid #272133;
+  margin-top: 20px;
+}
+
+.card__image:hover {
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  margin-top: 20px;
+  box-shadow: 0 10px 50px rgba(235, 25, 110, 1);
+}
+
+.social-icons {
+  padding: 0;
+  list-style: none;
+  margin: 1em;
+}
+
+.social-icons li {
+  display: inline-block;
+  margin: 0.15em;
+  position: relative;
+  font-size: 1em;
+}
+
+.social-icons i {
+  color: #fff;
+  position: absolute;
+  top: 0.95em;
+  left: 0.96em;
+  transition: all 265ms ease-out;
+}
+
+.social-icons a {
+  display: inline-block;
+}
+
+.social-icons a:before {
+  transform: scale(1);
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  content: " ";
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  display: block;
+  background: linear-gradient(45deg, #ff003c, #c648c8);
+  transition: all 265ms ease-out;
+}
+
+.social-icons a:hover:before {
+  transform: scale(0);
+  transition: all 265ms ease-in;
+}
+
+.social-icons a:hover i {
+  transform: scale(2.2);
+  -ms-transform: scale(2.2);
+  -webkit-transform: scale(2.2);
+  color: #ff003c;
+  background: -webkit-linear-gradient(45deg, #ff003c, #c648c8);
+  -webkit-text-fill-color: transparent;
+  transition: all 265ms ease-in;
+}
+
+.grid-container {
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 100px;
+  font-size: 1.2em;
+}
+
+/*-----------------CONTACT me SONU------------------*/
+
+/*--------USERS İNFORMATİON AREA--------*/
+
+.users_info {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: auto;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.photos_numbers {
+  border: 4px solid #151515;
+  width: 100%;
+  height: auto;
+  color: white;
+  font-family: sans-serif;
+  font-weight: 900;
+  background-color: #151515;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-bottom: 1rem;
+  margin-bottom: 5rem;
+  overflow: hidden;
+  animation: forphotos 20s infinite ease-in-out;
+}
+@keyframes forphotos {
+  10% {
+    border-top: 4px solid #ff003c;
+  }
+  20% {
+    border-top: 4px solid yellow;
+  }
+  30% {
+    border-right: 4px solid greenyellow;
+  }
+  40% {
+    border-right: 4px solid blue;
+  }
+
+  50% {
+    border-bottom: 4px solid #ff003c;
+  }
+  60% {
+    border-bottom: 4px solid yellow;
+  }
+  70% {
+    border-left: 4px solid greenyellow;
+  }
+  80% {
+    border-left: 4px solid blue;
+  }
+
+  90% {
+    border-top: 4px solid #ff003c;
+  }
+
+  100% {
+    border-right: 4px solid greenyellow;
+  }
+}
+
+.phtnumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  width: 100%;
+  font-size: 50px;
+  color: cornsilk;
+  animation: phtnumber 50s ease-in-out infinite;
+}
+
+@keyframes phtnumber {
+  10% {
+    color: #fff;
+  }
+  20% {
+    color: #fff;
+  }
+  30% {
+    color: #fff;
+  }
+  40% {
+    color: crimson;
+  }
+
+  50% {
+    color: crimson;
+  }
+  60% {
+    color: royalblue;
+  }
+  70% {
+    color: royalblue;
+  }
+  80% {
+    color: greenyellow;
+  }
+
+  90% {
+    color: greenyellow;
+  }
+
+  100% {
+    color: white;
+  }
+}
+
+.users_numbers {
+  width: 100%;
+  border: 4px solid #151515;
+  height: auto;
+  color: white;
+  font-family: sans-serif;
+  font-weight: 900;
+  background-color: #151515;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-bottom: 1rem;
+  overflow: hidden;
+  animation: forusers 20s infinite ease-in-out;
+}
+
+@keyframes forusers {
+  10% {
+    border-top: 4px solid blue;
+  }
+  20% {
+    border-top: 4px solid greenyellow;
+  }
+  30% {
+    border-right: 4px solid #ff003c;
+  }
+  40% {
+    border-right: 4px solid greenyellow;
+  }
+
+  50% {
+    border-bottom: 4px solid blue;
+  }
+  60% {
+    border-bottom: 4px solid greenyellow;
+  }
+  70% {
+    border-left: 4px solid yellow;
+  }
+  80% {
+    border-left: 4px solid #ff003c;
+  }
+
+  90% {
+    border-top: 4px solid crimson;
+  }
+
+  100% {
+    border-right: 4px solid royalblue;
+  }
+}
+
+.usrsnumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  width: 100%;
+  font-size: 50px;
+  color: cornsilk;
+  animation: usrnumber 50s ease-in-out infinite;
+}
+
+@keyframes usrnumber {
+  10% {
+    color: #fff;
+  }
+  20% {
+    color: #fff;
+  }
+  30% {
+    color: #fff;
+  }
+  40% {
+    color: blue;
+  }
+
+  50% {
+    color: blue;
+  }
+  60% {
+    color: blue;
+  }
+  70% {
+    color: yellow;
+  }
+  80% {
+    color: yellow;
+  }
+
+  90% {
+    color: yellow;
+  }
+
+  100% {
+    color: white;
+  }
+}
+/*-------- END OF THE USERS İNFORMATİON AREA--------*/
+
+/*-----Some Photos-------*/
+
+.usersphotos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #122e44;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+}
+
+.indxphotos {
+  margin: 3rem;
+  border: 2px solid whitesmoke;
+  border-radius: 30px;
+}
+
+.userfollowers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+  background-color: #151515;
+}
+.userfollowers h3 {
+  display: flex;
+  text-align: center;
+  color: wheat;
+  font-family: sans-serif;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 0;
+  margin: 0;
+  letter-spacing: 2;
+  width: 100%;
+}
+
+.userfollowers ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: royalblue;
+  font-family: Tahoma;
+  width: 100%;
+}
+
+.userfollowings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+  background-color: #151515;
+}
+
+.userfollowings h3 {
+  display: flex;
+  text-align: center;
+  color: wheat;
+  font-family: sans-serif;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 0;
+  margin: 0;
+  letter-spacing: 2;
+  width: 100%;
+}
+
+.userfollowings ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: royalblue;
+  font-family: Tahoma;
+  width: 100%;
+}
+
+@media only screen and (max-width: 950px) {
+  .usersphotos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+  }
+  .usersphts {
+    width: 100%;
+  }
+}
+
+/*-----End Of The Some Photos-------*/

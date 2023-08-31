@@ -1,37 +1,128 @@
 <%- include("partials/_header") %>
 
-   <!-- body -->
-   <body class="main-layout inner_page">
-      <!-- loader  -->
-      <div class="loader_bg">
-        <div class="loader"><img src="images\loading2.gif" alt="#" /></div>
-      </div>
-      <!-- end loader -->
-     
-         <!-- header -->
-         <%- include("partials/_menu") %>
 
-      <!-- end header inner -->
-      <!-- about -->
-      <div class="about">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="titlepage text_align_left">
-                <span>01</span>
-                <h2>About Us</h2>
-                <p>Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model </p>
-                <a class="read_more" href="about.html">Read More</a>
-              </div>
+
+  <body>
+
+
+    <!-- loader  -->
+
+    <div class="loader_bg">
+      <div class="loader"><img src="images\loading2.gif" alt="#" /></div>
+    </div>
+
+    <!-- end loader -->
+
+    <!-- header -->
+
+    <%- include("partials/_menu") %>
+
+      <!-- end header-->
+
+
+      <div class="cntnr">
+
+
+
+
+
+
+
+        <!-- members -->
+        <div class="users_info">
+          <div class="photos_numbers">
+
+            <h3>
+              Total Photos
+            </h3>
+
+            <div class="phtnumber">
+              <%= numOfPhotos %>
             </div>
-            <div class="col-md-6">
-              <div class="about_img">
-                <figure><img src="images/about_img.png" alt="#"/></figure>
-              </div>
+
+          </div>
+
+          <div class="users_numbers">
+
+            <h3>
+              Total Users
+            </h3>
+
+            <div class="usrsnumber">
+              <%= numOfUser %>
             </div>
+
           </div>
         </div>
+        <!-- end members -->
+
+        <!--ABOUT ME and contact BAŞLANGICI-->
+
+
+
+        <!--CONTACT  me   BAŞLANGICI-->
+
+
+
+
+
+
+
+        <!--sosyal medya yerleri-->
+        <div>
+          <div class="section_title">
+            <h2>Author</h2>
+          </div>
+
+          <div class="container">
+
+
+            <div class="card">
+              <img src="/images/mypicture.jpg" alt="Admin" class="card__image">
+              <p class="card__name">Süleyman kılınç</p>
+              <div class="grid-container">
+
+                <div class="grid-child-posts">
+                  0 Post
+                </div>
+
+                <div class="grid-child-followers">
+                  108 followers
+                </div>
+
+              </div>
+              <ul class="social-icons">
+                <li><a href="https://www.instagram.com/su1eymank"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="https://www.instagram.com/su1eymank"><i class="fa fa-whatsapp"></i></a></li>
+                <li><a href="https://www.instagram.com/su1eymank"><i class="fa fa-linkedin"></i></a></li>
+
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <!--sosyal medya yerleri sonu-->
+
+
+
+
+        <!--CONTACT me SONU-->
       </div>
-      <!-- end about -->
-      <!-- end footer -->
+
+
+
+
+
+
+      <!-- footer -->
+
       <%- include("partials/_footer") %>
+
+
+        <!-- end footer -->
+
+
+
+
+

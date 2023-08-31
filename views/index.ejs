@@ -1,167 +1,303 @@
 <%- include("partials/_header") %>
    <!-- body -->
 
-   <body class="main-layout">
+   <body>
+
+
       <!-- loader  -->
       <div class="loader_bg">
-         <div class="loader"><img src="images\loading2.gif" alt="#" /></div>
+         <div class="loader"><img src="images\loading2.gif" alt="Loading..." /></div>
       </div>
       <!-- end loader -->
 
+
+
       <!--Header-->
+
       <%- include("partials/_menu") %>
 
-         <!-- end header inner -->
-         <!-- top -->
-         <div class="full_bg bt_fe">
-            <div class="slider_main">
-               <div class="container-fluid">
-                  <div class="row d_flex">
-                     <div class="col-md-5">
-                        <div class="creative">
-                           <h1>Words Empire</h1>
-                           <a class="read_more" href="/contact">Contact Us</a>
-                        </div>
-                     </div>
-                     <div class="col-md-7">
-                        <!-- carousel code -->
-                        <div id="banner1" class="carousel slide">
-                           <ol class="carousel-indicators">
-                              <li data-target="#banner1" data-slide-to="0" class="active"></li>
-                              <li data-target="#banner1" data-slide-to="1"></li>
-                              <li data-target="#banner1" data-slide-to="2"></li>
-                           </ol>
-                           <div class="carousel-inner">
-                              <!-- first slide -->
-                              <div class="carousel-item active">
-                                 <div class="container">
-                                    <div class="carousel-caption relative">
-                                       <div class="row d_flex">
-                                          <div class="col-md-12">
-                                             <div class="cemara">
-                                                <figure><img src="<%= photos[0].url %>" alt="#" /></figure>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!-- second slide -->
-                              <div class="carousel-item">
-                                 <div class="container">
-                                    <div class="carousel-caption relative">
-                                       <div class="row d_flex">
-                                          <div class="col-md-12">
-                                             <div class="cemara">
-                                                <figure><img src="<%= photos[1].url %>" alt="#" /></figure>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!-- third slide-->
-                              <div class="carousel-item">
-                                 <div class="container">
-                                    <div class="carousel-caption relative">
-                                       <div class="row d_flex">
-                                          <div class="col-md-12">
-                                             <div class="cemara">
-                                                <figure><img src="<%= photos[2].url %>" alt="#" /></figure>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- controls -->
-                           <a class="carousel-control-prev" href="#banner1" role="button" data-slide="prev">
-                              <i class="fa fa-arrow-left" aria-hidden="true"></i>
-                              <span class="sr-only">Previous</span>
-                           </a>
-                           <a class="carousel-control-next" href="#banner1" role="button" data-slide="next">
-                              <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                              <span class="sr-only">Next</span>
-                           </a>
-                        </div>
-                     </div>
-                  </div>
+         <!-- end header -->
+
+
+
+
+         <!--ANASAYFA ALANI-->
+
+         <a name="Home"></a>
+
+         <section id="anasayfa" class="anasayfaalani">
+
+            <div class="inner_anasayfa">
+               <div class="child_anasayfa" id="chdhome">
+                  <h1>Do you need learning English?<br><span class="span_child">Learn Vocabulary And Grammar</span></h1>
+                  <p>You only need one click :)</p>
+                  <a href="#Lets_learn"> <button class="btn">Click Here</button></a>
                </div>
+
+               <div class="child_anasayfa">
+                  <img src="images/anasayfaresim1.png" alt="">
+               </div>
+
             </div>
-         </div>
-         </div>
-         <!-- end banner -->
-         <!-- gallery -->
-         <div class="gallery">
-            <div class="container_with">
-               <div class="row">
-                  <div class="col-md-12">
-                     <div class="titlepage text_align_center">
+         </section>
 
-                        <h2>Latest Photos</h2>
-                     </div>
-                  </div>
-               </div>
-               <div class="tz-gallery">
-                  <div class="row">
-                     <% for (photo of photos){ %>
 
-                        <div class="col-lg-4 col-md-6 ma_bottom30">
-                           <div class="lightbox">
-                              <img src="<%= photo.url %>" alt="<%= photo.name %>">
-                              <div class="view_main">
-                                 <div class="pose">
-                                    <a class="read_more" href="<%= photo.url %>"><img src="images/ga.png" alt="#" /></a>
-                                    <p>
-                                       <%= photo.description.substring(0 ,80) + "..." %>
-                                    </p>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <% } %>
+         <!--ANASAYFA ALANI-->
+
+
+         <!--BİLGİ KARTLARI BAŞLANGIÇ-->
+         <a name="Info"></a>
+         <div class="section_title">
+            <h2>İnformation</h2>
+
+         </div>
+         <section id="bilgikartlar">
+
+            <div class="innersoftware">
+
+               <div class="innersoftware_child">
+                  <div class="bilgicard_title">
+                     <h1>İnformation</h1>
                   </div>
+
+                  <p id="shortenedText"></p>
+
+                  <details>
+
+
+                     <summary class="readmorebtn outlined" href="#">Read more</summary>
+                     <p class="readmorealanı"> English is widely used in business, academics,
+                        scientific
+                        research, and technology. Knowing this language makes it easier to understand different cultures
+                        and
+                        provides a significant advantage during international travels. Being proficient in English
+                        enhances career opportunities and boosts competitiveness in the global job market. Learning
+                        English is essential for personal and professional development.</p>
+
+                  </details>
                </div>
+
+               <div class="innersoftware_child">
+                  <div class="bilgicard_title">
+                     <h1>Vocabulary</h1>
+                  </div>
+                  <p id="shortenedText1"></p>
+
+                  <details>
+
+
+                     <summary class="readmorebtn outlined" href="#">Read more</summary>
+                     <p class="readmorealanı"> A rich vocabulary allows us to communicate effectively, convey our
+                        thoughts,
+                        and comprehend others. It enhances reading comprehension, writing skills, and overall language
+                        proficiency. Learning new words opens doors to new ideas and cultures, expanding our
+                        horizons.
+                        Regularly building vocabulary through reading, practice, and word games empowers us to become
+                        confident and articulate English speakers.</p>
+
+                  </details>
+               </div>
+
+               <div class="innersoftware_child">
+                  <div class="bilgicard_title">
+                     <h1>Grammar</h1>
+                  </div>
+                  <p id="shortenedText2"></p>
+                  <details>
+
+
+                     <summary class="readmorebtn outlined" href="#">Read more</summary>
+                     <p class="readmorealanı">
+                        Understanding grammar rules enables us to construct
+                        proper sentences, avoid misunderstandings, and convey our ideas effectively.Proper grammar
+                        enhances
+                        writing and speaking skills, fostering professionalism and credibility. It forms the foundation
+                        for
+                        language learning, making it easier to grasp other aspects of English. Emphasizing grammar in
+                        education yields confident and proficient English users.</p>
+
+                  </details>
+               </div>
+
+               <div class="innersoftware_child">
+                  <div class="bilgicard_title">
+                     <h1>Writing</h1>
+                  </div>
+                  <p id="shortenedText3"></p>
+                  <details>
+
+
+                     <summary class="readmorebtn outlined" href="#">Read more</summary>
+                     <p class="readmorealanı">Through writing, we organize thoughts, refine
+                        ideas, and share knowledge. Effective writing skills are essential for academic success,
+                        professional communication, and creative expression.
+                        Writing fosters critical thinking and
+                        problem-solving abilities. Regular practice enhances vocabulary, grammar, and overall language
+                        proficiency. Emphasizing writing skills empowers individuals to articulate their ideas
+                        confidently
+                        and impactfully</p>
+
+                  </details>
+               </div>
+
+               <div class="innersoftware_child">
+                  <div class="bilgicard_title">
+                     <h1>Reading</h1>
+                  </div>
+                  <p id="shortenedText4"></p>
+                  <details>
+
+
+                     <summary class="readmorebtn outlined" href="#">Read more</summary>
+                     <p class="readmorealanı"> Through reading, we expand our vocabulary, enhance comprehension, and
+                        improve
+                        language fluency. It nurtures critical thinking, analytical skills, and creativity.
+                        Exposure to
+                        various texts, genres, and styles broadens cultural awareness and fosters empathy. Reading
+                        empowers
+                        us to communicate effectively and confidently, making it a fundamental skill for academic,
+                        professional, and personal growth.</p>
+
+                  </details>
+               </div>
+
+               <div class="innersoftware_child">
+                  <div class="bilgicard_title">
+                     <h1>Listening</h1>
+                  </div>
+                  <p id="shortenedText5"></p>
+
+                  <details>
+
+
+                     <summary class="readmorebtn outlined" href="#">Read more</summary>
+                     <p class="readmorealanı">It enhances understanding, language proficiency, and accurate
+                        response. Listening practice plays a significant role in comprehending emphasis, intonation, and
+                        natural speech patterns. Developing listening skills enables connecting dialogues, enriching
+                        language, and building trust in communication. Therefore, the importance of listening skill is
+                        indispensable for anyone aiming to enhance language proficiency and effective communication.
+                     </p>
+
+                  </details>
+               </div>
+
+
             </div>
+
+
+         </section>
+         <a name="Lets_learn"></a>
+
+         <!--BİLGİ KARTLARI SONU-->
+
+         <!--Learning alanı başlangıcı-->
+
+         <div class="section_title">
+            <h2>Let's learn Vocabulary&Grammar</h2>
+            <a name="Vocabulary"></a>
+
          </div>
-         <!-- end gallery -->
+         <div class="learning_container">
 
-         <!-- team -->
-         <div class="team">
-            <div class="container_with">
-               <div class="row">
 
-                  <div class="col-md-6">
-                     <div class="team_box text_align_center">
-
-                        <div class="craig">
-                           <h3>
-                              <%= numOfPhotos %>
-                           </h3>
-                           <span>Photos</span>
-
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-6">
-                     <div class="team_box text_align_center">
-
-                        <div class="craig">
-                           <h3>
-                              <%= numOfUser %>
-                           </h3>
-                           <span>Users</span>
-
-                        </div>
-                     </div>
-                  </div>
-
-               </div>
+            <div class="card122">
+               <a href="/vocabulary">Vocabulary</a>
             </div>
+
+            <div class="card122">
+               <a href="/grammar">Grammar</a>
+            </div>
+
+
          </div>
-         <!-- end team -->
+
+         <!--Learning alanı sonu-->
 
 
-         <!-- end footer -->
+        
+
+
+
+
+
+         <!-- footer -->
          <%- include("partials/_footer") %>
+            <!-- end footer -->
+
+            <script>
+               var longText = "The importance of English today is an undeniable fact. With globalization, communication between\
+                     people all around the world is increasing";
+               var shortenedText = longText.substring(0, 200) + "...";
+               document.getElementById("shortenedText").innerText = shortenedText;
+
+
+               var longText = "Vocabulary plays a crucial role in mastering English. It encompasses all the words we know and use\
+                     to express ourselves";
+               var shortenedText = longText.substring(0, 200) + "...";
+               document.getElementById("shortenedText1").innerText = shortenedText;
+
+               var longText = "Grammar holds a vital place in English language proficiency. It provides the structural framework\
+                     that ensures clear and accurate communication";
+               var shortenedText = longText.substring(0, 200) + "...";
+               document.getElementById("shortenedText2").innerText = shortenedText;
+
+
+               var longText = "Writing holds immense significance in English language development. It serves as a means of\
+               self - expression and a tool for clear communication ";
+               var shortenedText = longText.substring(0, 200) + "...";
+               document.getElementById("shortenedText3").innerText = shortenedText;
+
+               var longText = "Reading holds immense importance in English language learning. It is a gateway to knowledge, ideas,\
+                     and new perspectives";
+               var shortenedText = longText.substring(0, 200) + "...";
+               document.getElementById("shortenedText4").innerText = shortenedText;
+
+               var longText = "Listening is of great importance in English language learning. Effective listening is a fundamental\
+                     skill for successful communication";
+               var shortenedText = longText.substring(0, 200) + "...";
+               document.getElementById("shortenedText5").innerText = shortenedText;
+
+
+
+
+
+
+
+               /*MODAL İÇİN*/
+
+               document.addEventListener('DOMContentLoaded', function () {
+                  const photos = document.querySelectorAll('.usersphts');
+                  const modalOverlay = document.querySelector('.modal-overlay');
+                  const modalImage = document.querySelector('#modalImage');
+                  const closeModal = document.querySelector('.close');
+
+                  photos.forEach(photo => {
+                     photo.addEventListener('click', () => {
+                        modalImage.src = photo.src;
+                        modalOverlay.style.display = 'flex';
+                     });
+                  });
+
+                  closeModal.addEventListener('click', () => {
+                     modalOverlay.style.display = 'none';
+                  });
+
+                  modalOverlay.addEventListener('click', (event) => {
+                     if (event.target === modalOverlay) {
+                        modalOverlay.style.display = 'none';
+                     }
+                  });
+               });
+
+
+
+               /* end MODAL İÇİN*/
+
+
+
+
+
+
+
+
+            </script>

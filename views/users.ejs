@@ -1,52 +1,70 @@
 <%- include("partials/_header") %>
 
    <!-- body -->
-   <body class="main-layout inner_page">
+
+   <body>
       <!-- loader  -->
       <div class="loader_bg">
-         <div class="loader"><img src="/images/loading2.gif" alt="#"/></div>
+         <div class="loader"><img src="/images/loading2.gif" alt="#" /></div>
       </div>
       <!-- end loader -->
-     
-         <!-- header -->
-         <%- include("partials/_menu") %>
 
-      <!-- end header inner -->
-      <!-- team -->
-      <div class="team">
-         <div class="container_with">
-            <div class="row">
-               <div class="col-md-12">
-                  <div class="titlepage text_align_center">
-                    <span>05</span>
-                     <h2>Our Blog</h2>
-                  </div>
-               </div>
+      <!-- header -->
+      <%- include("partials/_menu") %>
 
-               <% for (user of users){ %>
+         <!-- end header inner -->
 
-               <div class="col-md-4">
-                  <div class="team_box text_align_center">
-                     <div class="team_img">
-                       <figure><img src="images/team1.jpg" alt="#"/></figure>
+         <div class="userscontainer">
+            <div class="userspostsbody">
+               <div class="postscontainer">
+                  <!-- users.ejs -->
+                  <% var registeredUsers=[]; users.forEach(user=> {
+                     if (!registeredUsers.includes(user._id.toString())) {
+                     registeredUsers.push(user._id.toString());
+                     %>
+                     <div class="user-card">
+                        <div class="user-card-header">
+                           <img class="user-avatar" src="" alt="Profile Photo">
+                           <div>
+                              <a class="user-name" href="/users/<%= user._id %>">
+                                 <%= user.username %>
+                              </a>
+                           </div>
+                        </div>
                      </div>
-                     <div class="craig">
-                       <h3> <%= user.username %></h3>
-                       <span>PHOTOGRAPHER</span>
-                       <ul class="social_icon ">
-                          <li><a href="Javascript:void(0)"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                          <li><a href="Javascript:void(0)"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                          <li><a href="/users/<%= user._id %>"><i class="fa fa-external-link-square" aria-hidden="true"></i></a></li>
-                       </ul>
-                     </div>
-                  </div>
+                     <% } }); if (registeredUsers.length===0) { %>
+                        <div style="display: flex; align-items: center; justify-content: center;">
+                           <p style="width: 100%;
+             color: crimson; font-family: sans-serif;
+              font-size: 35px;
+              text-align: center;
+              font-weight: 900; text-transform: uppercase;">there is nobody except you</p>
+
+                           <div class="postscard">
+
+                              <div class="postscard-header">
+                                 <div><a class="postsuser-name">SULEYMAN KILINC</a></div>
+                              </div>
+                              <img class="postscard-image"
+                                 src="https://res.cloudinary.com/dwcgw2rci/image/upload/v1693225719/lenslight_tr/anime-sad-gif-1_q5r3tx.gif"
+                                 alt="Card Image">
+                              <div class="postscard-description">
+                                 <p style="font-family: sans-serif;
+                   font-size: 18px; color: #151515;">:((</p>
+                              </div>
+                           </div>
+
+                        </div>
+                        <% } %>
                </div>
-
-               <% } %>
-
             </div>
          </div>
-      </div>
-      <!-- end team -->
-      <!-- end footer -->
-      <%- include("partials/_footer") %>
+         <!-- end users -->
+
+
+
+
+
+
+         <!-- end footer -->
+         <%- include("partials/_footer") %>

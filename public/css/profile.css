@@ -1,0 +1,85 @@
+.infocard-container {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  margin-top: 3rem;
+}
+
+.info-card {
+  width: 400px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.info-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.profile-username {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.info-content {
+  text-align: left;
+}
+
+.info-property {
+  margin-bottom: 10px;
+}
+
+.property-name {
+  font-weight: bold;
+}
+
+.property-value {
+  margin-left: 10px;
+}
+
+@media (max-width: 600px) {
+  .info-card {
+    width: 90%;
+    max-width: 400px;
+  }
+}
+
+/*profil foto*/
+
+.profile-photo-upload label,
+.profile-photo-upload input[type="text"],
+.profile-photo-upload input[type="file"] {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.profile-photo-upload input[type="text"],
+.profile-photo-upload input[type="file"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.profile-photo-upload button.upload-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  cursor: pointer;
+}

@@ -1,0 +1,114 @@
+body::-webkit-scrollbar {
+  width: 20px; /* scrollbar'ın genişliği */
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent; /* tracking alanının arka plan rengi */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: transparent; /* kaydırma çubuğunun rengi */
+  border-radius: 10px; /* kaydırma çubuğunun yuvarlatılma miktarı */
+  border: 1px solid transparent; /* kaydırma çubuğuna etrafında boşluk bırakmak için kenarlık */
+}
+
+
+
+
+.logincontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+
+}
+
+.loginbox {
+  width: 400px;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  animation: fadeIn 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+
+.form_controlrgs:focus {
+  background-color: #24caac;
+  outline: none;
+}
+
+
+.loginright{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.loginright h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 1rem;
+
+}
+
+.inputfield {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  color: #333;
+  background-color: #f9f9f9;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.inputfield:focus {
+  background-color: #f0f0f0;
+  outline: none;
+}
+
+.loginbtn {
+  width: 100%;
+  height: 40px;
+  color: #fff;
+  background-color: #1f9c8b;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.loginbtn:hover {
+  background-color: #158574;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+
+.registerbtn {
+  display: block;
+  color: #1f9c8b;
+  font-size: 16px;
+  text-decoration: none;
+  margin-top: 1rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.registerbtn:hover {
+  color: #158574;
+}

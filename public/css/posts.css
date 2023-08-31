@@ -1,0 +1,180 @@
+/* Genel stil ayarları */
+.postsbody {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.postscontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.postscard {
+  width: 300px;
+  margin: 15px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.postscard:hover {
+  transform: scale(1.02);
+}
+
+.postscard-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.postsuser-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.postsuser-name {
+  font-size: 18px;
+  font-family: sans-serif;
+  font-weight: bolder;
+  color: #333;
+  text-decoration: none;
+}
+
+.postscard-image {
+  width: 100%;
+  height: auto;
+}
+
+/* banner */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 500px;
+  height: 50vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.548);
+}
+.modal form {
+  position: relative;
+  min-width: 30%;
+  min-width: 30;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background: white;
+  border-radius: 1.5rem;
+  font-size: 1.2rem;
+}
+#modal-kapat {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: gray;
+  padding: 0.5rem;
+  border-bottom-left-radius: 1rem;
+  cursor: pointer;
+}
+#modal-kapat:hover {
+  background: rgb(102, 102, 102);
+}
+.modal form input {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+}
+#form-buton {
+  background: #ff6378;
+}
+#form-buton:hover {
+  background: #fa5369;
+}
+.banner {
+  margin-top: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.text h1 {
+  font-size: 5rem;
+}
+.text p {
+  margin: 2rem 0;
+}
+.text button {
+  background: #6c63ff;
+  color: white;
+  border: 0;
+  border-radius: 2rem;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+.text button:hover {
+  background: #6b63ffc0;
+}
+
+/* banner bitis */
+
+/* animasyonlar */
+
+#Telefon {
+  animation: telefon-animasyonu 2s linear infinite;
+}
+
+#parca1 {
+  animation: parca-animasyonu 2s linear infinite;
+}
+#parca2 {
+  animation: parca-animasyonu 2s 0.2s linear infinite;
+}
+#parca3 {
+  animation: parca-animasyonu 2s 0.4s linear infinite;
+}
+
+@keyframes telefon-animasyonu {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-1rem);
+  }
+  40% {
+    transform: translateY(-1.5rem);
+  }
+  70% {
+    transform: translateY(-2rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes parca-animasyonu {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-0.5rem);
+  }
+  40% {
+    transform: translateY(-1rem);
+  }
+  70% {
+    transform: translateY(-1.5rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

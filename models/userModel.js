@@ -4,59 +4,104 @@ import validator from "validator";
 
 const { Schema } = mongoose;
 
-const userSchema = new Schema({
+const userSchema = new Schema(
+  {
     username: {
-        type: String,
-        required: [true, "UserName area is gerekli kardeş"],
-        unique: true,
-        lowercase: true,
-        validate: [validator.isAlphanumeric, "sadece harfleri kullan kardeş"],
+      type: String,
+      required: [true, "lütfen username alanını doldurunuz!"],
+      unique: true,
+      lowercase: true,
+      validate: {
+        validator: (value) => {
+          return !/\s/.test(value);
+        },
+        message: "Kullanıcı adında boşluk karakteri kullanamazsınız",
+      },
     },
+    itsname: {
+      type: String,
+      required: [true, "Lütfen isminizi yazınız!"],
+      lowercase: true,
+      validate: {
+        validator: (value) => {
+          return /^[A-Za-zÇçĞğİıÖöŞşÜü\s]+$/.test(value) && !/\s/.test(value);
+        },
+        message: "Sadece harfleri kullanmalısınız",
+      },
+    },
+    itssurname: {
+      type: String,
+      required: [true, "Lütfen soyadınızı yazınız!"],
+      lowercase: true,
+      validate: {
+        validator: (value) => {
+          return /^[A-Za-zÇçĞğİıÖöŞşÜü\s]+$/.test(value) && !/\s/.test(value);
+        },
+        message: "Sadece harfleri kullanmalısınız",
+      },
+    },
+
     email: {
-        type: String,
-        required: [true, "E-mail area is also gerekli kardeş"],
-        unique: true,
-        validate: [validator.isEmail, "Sallama lan doğru düzgün yaz"],
+      type: String,
+      required: [true, "Lütfen E-mail alanını doldurunuz!"],
+      unique: true,
+      validate: [
+        {
+          validator: validator.isEmail,
+          message: "Lütfen geçerli bir e-mail adresi giriniz",
+        },
+        {
+          validator: (value) => {
+            return !/\s/.test(value);
+          },
+          message: "E-posta adresinde boşluk karakteri kullanamazsınız",
+        },
+      ],
     },
+
     password: {
-        type: String,
-        required: [true, "Password area is gerekli kardeş"],
-        minLength: [4, "4 karakterden fazla olmalı hocam"],
+      type: String,
+      required: [true, "lütfen password alanını doldurunuz!"],
+      minLength: [
+        8,
+        "Password en az 8 karakter uzunluğunda olmalı, en az bir büyük harf ve bir sayı içermelidir.",
+      ],
+      validate: {
+        validator: (value) => {
+          return !/\s/.test(value);
+        },
+        message: "Parolada boşluk kullanamazsınız!!",
+      },
     },
     followers: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'User',
-        },
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
     ],
     followings: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'User',
-        },
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
     ],
-},
+  },
 
-    {
-        timestamps: true
-    }
-
+  {
+    timestamps: true,
+  }
 );
 
-
 userSchema.pre("save", function (next) {
-    const user = this;
+  const user = this;
 
-    bcrypt.hash(user.password, 10, (err, hash) => {
-        user.password = hash;
+  bcrypt.hash(user.password, 10, (err, hash) => {
+    user.password = hash;
 
-        next();
-    });
-
+    next();
+  });
 });
 
-
-
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 
 export default User;

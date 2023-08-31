@@ -1,7 +1,10 @@
 <%- include("partials/_header") %>
    <!-- body -->
 
-   <body class="main-layout inner_page">
+
+
+   <body style="background-color:#f5f5f5;;">
+
       <!-- loader  -->
       <div class="loader_bg">
          <div class="loader"><img src="images\loading2.gif" alt="#" /></div>
@@ -11,110 +14,189 @@
       <!-- header -->
       <%- include("partials/_menu") %>
          <!-- end header inner -->
+
+
          <!-- contact -->
-         <div class="contact">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-12 ">
-                     <div class="titlepage text_align_center">
 
-                        <h2>Register</h2>
-                     </div>
-                  </div>
-                  <div class="col-md-8 offset-md-2">
-                     <form id="request" class="main_form" action="users/register" method="POST">
-                        <div class="row">
-                           <div class="col-md-12">
-                              <input class="form_control" placeholder="Username" type="text" name="username">
-                           </div>
-                           <div class="col-md-12">
-                              <div style="display: none;" class="alert alert-danger" id="username"></div>
-                           </div>
-                           <div class="col-md-12">
-                              <input class="form_control" placeholder="Email" type="email" name="email">
-                           </div>
-                           <div class="col-md-12">
-                              <div style="display: none;" class="alert alert-danger" id="email"></div>
-                           </div>
-                           <div class="col-md-12">
-                              <input class="form_control" placeholder="Password" type="password" name="password">
-                           </div>
-                           <div class="col-md-12">
-                              <div style="display: none;" class="alert alert-danger" id="password"></div>
-                           </div>
 
-                           <div class="col-md-12">
-                              <div class="group_form">
-                                 <button class="send_btn">Register</button>
 
-                              </div>
-                           </div>
-                        </div>
-                     </form>
-                  </div>
+
+
+
+
+
+         <form id="request" class="rgstrmain_form" action="users/register" method="POST">
+            <div class="rowrgs">
+               <h2>Register</h2>
+
+               <div class="fullName">
+                  <input style="width: 45%; margin-top: 0;" class="form_controlrgs" placeholder="Name" type="text"
+                     name="itsname">
+                  <div style="display: none;" class="alert-dangerrgs" id="itsname"></div>
+
+                  <input style="width: 45%;margin-top: 0;" class="form_controlrgs" placeholder="Surname" type="text"
+                     name="itssurname">
+                  <div style="display: none;" class="alertrgs alert-dangerrgs" id="itssurname"></div>
+
                </div>
+
+               <input class="form_controlrgs" placeholder="Username" type="text" name="username">
+               <div style="display: none;" class="alertrgs alert-dangerrgs" id="username"></div>
+
+               <input class="form_controlrgs" placeholder="Email" type="email" name="email">
+               <div style="display: none;" class="alertrgs alert-dangerrgs" id="email"></div>
+
+
+               <input class="form_controlrgs" placeholder="Password" type="password" name="password"
+                  autocomplete="new-password">
+               <div style="display: none;" class="alertrgs alert-dangerrgs" id="password"></div>
+
+               <input class="form_controlrgs" placeholder="Confirm Password" type="password" name="confirmPassword"
+                  autocomplete="new-password">
+               <div style="display: none;" class="alertrgs alert-dangerrgs" id="confirmPassword"></div>
+
+
+
+               <button class="register_btnr">Register</button>
             </div>
-         </div>
+         </form>
+
+
+
+
+
+
 
          <script>
-            const form = document.querySelector('form')
-            const emailError = document.querySelector('#email')
-            const passwordError = document.querySelector('#password')
-            const usernameError = document.querySelector('#username')
+            const form = document.querySelector('form');
+            const emailError = document.querySelector('#email');
+            const passwordError = document.querySelector('#password');
+            const confirmPasswordError = document.querySelector('#confirmPassword');
+            const usernameError = document.querySelector('#username');
+            const itsnameError = document.querySelector('#itsname');
+            const itssurnameError = document.querySelector('#itssurname');
+
 
             form.addEventListener("submit", async (e) => {
                e.preventDefault();
 
                emailError.textContent = "";
+               itsnameError.textContent = "";
+               itssurnameError.textContent = "";
                passwordError.textContent = "";
+               confirmPasswordError.textContent = "";
                usernameError.textContent = "";
-               emailError.style.display = "none"
-               passwordError.style.display = "none"
-               usernameError.style.display = "none"
+               emailError.style.display = "none";
+               passwordError.style.display = "none";
+               confirmPasswordError.style.display = "none";
+               usernameError.style.display = "none";
+               itsnameError.style.display = "none";
+               itssurnameError.style.display = "none";
 
-               const email = form.email.value
-               const password = form.password.value
-               const username = form.username.value
+
+               const email = form.email.value;
+               const password = form.password.value;
+               const confirmPassword = form.confirmPassword.value;
+               const username = form.username.value;
+               const itsname = form.itsname.value;
+               const itssurname = form.itssurname.value;
+
+
+
+               if (itsname.length < 1) {
+                  itsnameError.textContent = "lütfen adınızı giriniz!";
+                  itsnameError.style.display = "block";
+                  return;
+               }
+               if (itssurname.length < 1) {
+                  itssurnameError.textContent = "lütfen soyadınızı giriniz!";
+                  itssurnameError.style.display = "block";
+                  return;
+               }
+
+               if (username.length < 4) {
+                  usernameError.textContent = "Kullanıcı adı en az 4 karakter olmalıdır.";
+                  usernameError.style.display = "block";
+                  return;
+               }
+
+
+               const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+               if (!passwordRegex.test(password)) {
+                  passwordError.textContent = "Şifre en az 8 karakter uzunluğunda olmalı, en az bir büyük harf ve bir sayı içermelidir.";
+                  passwordError.style.display = "block";
+                  return;
+               }
+
+               if (password !== confirmPassword) {
+                  confirmPasswordError.textContent = "Lütfen aynı şifreyi giriniz!";
+                  confirmPasswordError.style.display = "block";
+                  return;
+               }
 
                try {
                   const res = await fetch('users/register', {
                      method: "POST",
-                     body: JSON.stringify({ email, password, username }),
+                     body: JSON.stringify({ email, password, username, itsname, itssurname }),
                      headers: { "Content-Type": "application/json" }
-                  })
+                  });
 
                   const data = await res.json();
 
+
+
                   if (data) {
 
+
+
+
                      if (data.email) {
-                        emailError.textContent = data.email
-                        emailError.style.display = "block"
+                        emailError.textContent = data.email;
+                        emailError.style.display = "block";
                      }
 
                      if (data.password) {
-                        passwordError.textContent = data.password
-                        passwordError.style.display = "block"
+                        passwordError.textContent = data.password;
+                        passwordError.style.display = "block";
                      }
 
                      if (data.username) {
-                        usernameError.textContent = data.username
-                        usernameError.style.display = "block"
+                        usernameError.textContent = data.username;
+                        usernameError.style.display = "block";
                      }
 
+                     if (data.itsname) {
+                        itsnameError.textContent = data.itsname;
+                        itsnameError.style.display = "block";
+                     }
+
+                     if (data.itssurname) {
+                        itssurnameError.textContent = data.itssurname;
+                        itssurnameError.style.display = "block";
+                     }
 
                   }
 
                   if (data.user) {
-                     location.assign("/login")
+                     // Başarılı kayıt mesajını göster
+                     const successMessage = document.createElement("p");
+                     successMessage.textContent = "Hesabınız başarıyla oluşturuldu";
+                     successMessage.style.color = "green";
+                     form.insertBefore(successMessage, form.firstChild);
+
+                     // Belirli bir süre sonra otomatik olarak /login sayfasına yönlendir
+                     setTimeout(() => {
+                        location.assign("/login");
+                     }, 5000); // 5 saniye sonra yönlendir
+
                   }
-
-
-
                } catch (err) {
-                  console.log("ERR::", err)
+                  console.log("ERR::", err);
                }
-            })
+            });
+
+
          </script>
          <!-- end contact -->
          <!-- end footer -->

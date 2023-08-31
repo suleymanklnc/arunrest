@@ -8,53 +8,72 @@
       </div>
       <!-- end loader -->
 
+
       <!-- header -->
       <%- include("partials/_menu") %>
          <!-- end header inner -->
-         <!-- gallery -->
-         <div class="gallery">
-            <div class="container_with">
-               <div class="row">
-                  <div class="col-md-12">
-                     <div class="titlepage text_align_center">
-                        <span>03</span>
-                        <h2>Our gallery</h2>
+
+
+
+         //photos
+
+
+         <div class="photoscontainer">
+
+            <% if (photos.length> 0) { %>
+               <% photos.reverse().forEach(photo=> { %>
+                  <div class="postscard">
+                     <div class="postscard-header">
+                        <img class="postsuser-avatar" src="<%= photo.url %>" alt="User Avatar">
+                        <div>
+                           <a class="postsuser-name" href="/photos/<%= photo._id %>">
+                              <%= photo.uploadedBy %>
+                           </a>
+                        </div>
+                     </div>
+                     <img class="postscard-image " src="<%= photo.url %>" alt="Card Image">
+                     <div class="photo-description">
+                        <p>
+                           <%= photo.description %>
+                        </p>
                      </div>
                   </div>
-               </div>
-               <div class="tz-gallery">
-                  <div class="row">
-
-
-                     <% for (photo of photos){ %>
-                    
-
-                        <div class="col-lg-4 col-md-6 ma_bottom30">
-                           <div class="lightbox">
-                              <img src="<%= photo.url %>" alt="<%= photo.name %>">
-                              <div class="view_main">
-                                 <div class="pose">
-                                    <a class="read_more" href="/photos/<%= photo._id %>"><img src="/images/ga.png"
-                                          alt="#"></a>
-                                    <h3 style="padding-top: 10px; padding-bottom: 10px;">
-                                       <%= photo.name %>
-                                    </h3>
-                                    <p style="padding-top: 10px;">
-                                       <%= photo.description.substring(0 ,80) + "..." %>
-                                    </p>
-                                 </div>
+                  <% }); %>
+                     <% } else { %>
+                        <p style="width: 100%;
+                        color: crimson; font-family: sans-serif;
+                         font-size: 35px;
+                         text-align: center;
+                         font-weight: 900; text-transform: uppercase;">No posts to display except</p>
+                        <div class="postscard">
+                           <div class="postscard-header">
+                              <div>
+                                 <a class="postsuser-name">SULEYMAN KILINC</a>
                               </div>
                            </div>
-
+                           <img class="postscard-image"
+                              src="https://res.cloudinary.com/dwcgw2rci/image/upload/v1693225719/lenslight_tr/anime-sad-gif-1_q5r3tx.gif"
+                              alt="Card Image">
+                           <div class="postscard-description">
+                              <p style="font-family: sans-serif;
+                  font-size: 18px; color: #151515;">:((</p>
+                           </div>
                         </div>
                         <% } %>
-                           <div class="col-md-12">
-                              <a class="plus_btn" href="gallery.html">+</a>
-                           </div>
-                  </div>
-               </div>
-            </div>
+
          </div>
-         <!-- end gallery -->
-         <!-- end footer -->
+
+
+         //photos end
+
+
+
+
+
+
+
+
+         <!--footer -->
+
          <%- include("partials/_footer") %>
+            <!-- end footer -->

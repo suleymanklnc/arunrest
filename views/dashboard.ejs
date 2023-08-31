@@ -2,258 +2,279 @@
 
     <!-- body -->
 
-    <body class="main-layout inner_page">
+    <body>
+
         <!-- loader  -->
+
         <div class="loader_bg">
             <div class="loader"><img src="/images/loading2.gif" alt="#" /></div>
         </div>
+
         <!-- end loader -->
 
-        <!-- header -->
         <%- include("partials/_menu") %>
 
-            <!-- end header inner -->
 
+            <!--dashboard-->
+            <div class="dashboard">
 
-            <!--  customers -->
-            <div class="customers">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="titlepage text_align_center">
+                <div class="dashboardlinks">
+                    <h2
+                        style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-bottom: 1rem; font-size: 18px; color: crimson; font-weight: bolder; text-transform: uppercase;">
 
-                                <h2>Welcome <%= user.username %>
-                                </h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="satteb text_align_center">
-                                <p>fact that a reader will be distracted by the readable content of a page when looking
-                                    at its
-                                    layout. The point of using Lorem Ipsum is that itfact that a reader will be
-                                    distracted by the
-                                    readable content of a page when looking at its layout. The point of using Lorem
-                                    Ipsum is that
-                                    itfact that a reader will be distracted by the readable content of a page when
-                                    looking at its
-                                    layout. The point of using Lorem Ipsum is that itfact that a reader will be
-                                    distracted by the
-                                    readable content of a page when looking at its layout. The point of using Lorem
-                                    Ipsum is that it
-                                </p>
-                                <h3>The point of using </h3>
-                                <i><img src="/images/custo.jpg" alt="#" /></i>
-                            </div>
-                        </div>
-                    </div>
+                        <% const now=new Date(); const hour=now.getHours(); let greeting="" ; if (hour>= 5 &&
+                            hour < 12) { greeting="Günaydın" ; } else if (hour>= 12 && hour < 18) {
+                                    greeting="İyi günler" ; } else if (hour>= 18 && hour < 22) { greeting="İyi akşamlar"
+                                        ; } else { greeting="İyi geceler" ; } %>
+                                        <%= greeting %>
+                                            <%= user.itsname %>
+                                                <%= user.itssurname %>
+                    </h2>
 
 
 
-                    <div class="row">
-                        <div class="col-md-12 text_align_center">
-                            <button data-toggle="modal" data-target=".bd-example-modal-lg" type="button"
-                                style=" margin-top:100px; margin-left: 50%; transform: translateX(-50%);"
-                                class="read_more" href="about.html">Add New Photo</button>
-                        </div>
-                    </div>
+                    <button id="openModalBtn" class="add-photo-btn" type="button">
+                        <i class="far fa-share-square"></i>Share
+                    </button>
+
+
+                 
+
+                    <ul>
+
+                        <li>
+                            <a style="margin-top: 2rem;" href="/profile" class="dashboard-link">
+                                <i class="fas fa-user-alt"></i>
+                                <span>Profil</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/posts" class="dashboard-link">
+                                <i class="fa fa-share"></i>
+                                <span>Posts</span>
+                            </a>
+                        </li>
+
+                           <li>
+                            <a href="/followings" class="dashboard-link">
+                                <i class="fas fa-users"></i>
+                                <span>followers</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/followers" class="dashboard-link">
+                                <i class="fas fa-user-friends"></i>
+                                <span>Followings</span>
+                            </a>
+                        </li>
+
+                     
+
+                        <li>
+                            <a href="/settings" class="dashboard-link">
+                                <i class="fas fa-cog"></i>
+                                <span>Ayarlar</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Çıkış Yap</span>
+                            </a>
+                        </li>
+
+
+
+
+                    </ul>
+
+                </div>
+
+                <!-- İçerik alanı -->
+                <div class="iframecontent">
 
 
                 </div>
+
+                <!-- end of the dashboard-->
+
+
+
+
+
+
+                <!--foto ekleme-->
+
+
+
+
+
+
+
+
+
+
+
+                <div class="foto_ekleme_modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                    aria-hidden="true">
+
+
+
+                    <div class="dbmodal">
+
+
+                        <div class="dbmodal_header">
+                            <h2>Add New Post</h2>
+                            <span id="closeModalBtn" style="
+                                                
+                                                color: red;
+                                                cursor: pointer;">Cancel</span>
+                        </div>
+
+
+                        <form id="request" class="dbmain_form" method="POST" action="/photos"
+                            enctype="multipart/form-data">
+
+
+                            <input class="dbform_name" placeholder="Name" type="text" id="name" name="name" required>
+
+
+                            <textarea name="description" class="dbform_descriptn" placeholder="Description"
+                                id="description" required></textarea>
+
+                            <input type="file" name="image" class="dbform_img" required>
+
+
+                            <button class="dbform_btn">Upload</button>
+
+                    </div>
+
+                    </form>
+                </div>
+
+
+
             </div>
-            <!-- end customers  -->
+            <!--end foto ekleme-->
 
-            <!-- gallery -->
-            <% if (photos.length> 0 ) { %>
-                <div class="gallery">
-                    <div class="container_with">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="titlepage text_align_center">
-
-                                    <h2>My Photos</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tz-gallery">
-                            <div class="row">
-
-
-                                <% for (photo of photos){ %>
-
-                                    <div class="col-lg-4 col-md-6 ma_bottom30">
-                                        <div class="lightbox">
-                                            <img src="<%= photo.url %>" alt="<%= photo.name%>">
-                                            <div class="view_main">
-                                                <div class="pose">
-                                                    <a class="read_more" href="/photos/<%= photo._id %>"><img
-                                                            src="/images/ga.png" alt="#"></a>
-                                                    <h3 style="padding-top: 10px; padding-bottom: 10px;">
-                                                        <%= photo.name %>
-                                                    </h3>
-                                                    <p style="padding-top: 10px;">
-                                                        <%= photo.description.substring(0 ,80) + "..." %>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <% } %>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <% } %>
-                    <!-- end gallery -->
-
-                    <% if (user.followers.length> 0) { %>
-                        <div class="team">
-                            <div class="container_with">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="titlepage text_align_center">
-                                            <h2>Followers</h2>
-                                        </div>
-                                    </div>
-
-                                    <% for (follower of user.followers) { %>
-                                        <div class="col-md-4">
-                                            <div class="team_box text_align_center">
-                                                <div class="team_img">
-                                                    <figure><img src="/images/team1.jpg" alt="#" /></figure>
-                                                </div>
-                                                <div class="craig">
-                                                    <h3>
-                                                        <%= follower.username %>
-                                                    </h3>
-                                                    <span>PHOTOGRAPHER</span>
-                                                    <ul class="social_icon ">
-                                                        <li><a href="Javascript:void(0)"><i class="fa fa-facebook"
-                                                                    aria-hidden="true"></i></a></li>
-                                                        <li><a href="Javascript:void(0)"><i class="fa fa-twitter"
-                                                                    aria-hidden="true"></i></a></li>
-                                                        <li><a href="/users/<%= follower._id %>"><i
-                                                                    class="fa fa-external-link-square"
-                                                                    aria-hidden="true"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <% } %>
-
-                                </div>
-                            </div>
-                        </div>
-                        <% } %>
-
-                            <% if (user.followings.length> 0) { %>
-                                <div class="team">
-                                    <div class="container_with">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="titlepage text_align_center">
-                                                    <h2>Followings</h2>
-                                                </div>
-                                            </div>
-
-                                            <% for (following of user.followings) { %>
-                                                <div class="col-md-4">
-                                                    <div class="team_box text_align_center">
-                                                        <div class="team_img">
-                                                            <figure><img src="/images/team1.jpg" alt="#" /></figure>
-                                                        </div>
-                                                        <div class="craig">
-                                                            <h3>
-                                                                <%= following.username %>
-                                                            </h3>
-                                                            <span>PHOTOGRAPHER</span>
-                                                            <ul class="social_icon ">
-                                                                <li><a href="Javascript:void(0)"><i
-                                                                            class="fa fa-facebook"
-                                                                            aria-hidden="true"></i></a></li>
-                                                                <li><a href="Javascript:void(0)"><i
-                                                                            class="fa fa-twitter"
-                                                                            aria-hidden="true"></i></a></li>
-                                                                <li><a href="/users/<%= following._id %>"><i
-                                                                            class="fa fa-external-link-square"
-                                                                            aria-hidden="true"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <% } %>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <% } %>
-
-                                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
-                                        aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div style="margin-top: 50px; margin-bottom: 50px;" class="container">
-                                                    <div class="row">
-                                                        <div class="col-md-12 ">
-                                                            <div class="text_align_center">
-                                                                <h2 style="
-                    font-size: 30px;
-                    margin-bottom: 20px;
-                    color: #D43A8E;
-                ">Add New Photo</h2>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-10 offset-md-1">
-                                                            <form id="request" class="main_form" method="POST"
-                                                                action="/photos" enctype="multipart/form-data">
-                                                                <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <input class="form_control" placeholder="Name"
-                                                                            type="text" name="name">
-                                                                    </div>
-                                                                    <div class="col-md-12">
-                                                                        <textarea name="description"
-                                                                            style="height: 150px;" class="form_control"
-                                                                            placeholder="Description"
-                                                                            rows="5"></textarea>
-                                                                    </div>
-
-                                                                    <div style="margin-bottom: 20px ;"
-                                                                        class="col-md-12">
-                                                                        <input type="file" name="image"
-                                                                            class="form-control-file">
-                                                                    </div>
-
-                                                                    <div class="col-md-12">
-                                                                        <div class="group_form">
-                                                                            <button class="read_more">Upload
-                                                                                File</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+            
 
 
 
 
 
 
-                                    <!-- end footer -->
-                                    <%- include("partials/_footer") %>
+            <!-- end footer -->
+            <%- include("partials/_footer") %>
+
+
+
+
+                <script>
+
+
+
+                    function loadContent(url) {
+                        fetch(url)
+                            .then(response => response.text())
+                            .then(data => {
+                                const contentContainer = document.querySelector('.iframecontent');
+                                contentContainer.innerHTML = data;
+                            })
+                            .catch(error => {
+                                console.error('An error occurred while loading content:', error);
+                            });
+                    }
+
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const defaultURL = '/profile'; // Başlangıçta yüklenecek sayfanın URL'si
+                        loadContent(defaultURL); // Başlangıçta profil sayfasını yükle
+
+                        const dashboardLinks = document.querySelectorAll('.dashboard-link');
+
+                        dashboardLinks.forEach(link => {
+                            link.addEventListener('click', event => {
+                                event.preventDefault();
+                                const url = link.getAttribute('href');
+                                loadContent(url);
+                            });
+                        });
+                    });
+
+
+
+
+
+
+
+
+                    // Form gönderme ve geçerlilik kontrolleri
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const form = document.getElementById("request");
+
+                        form.addEventListener("submit", async function (event) {
+                            const nameInput = document.getElementById("name");
+                            const descriptionInput = document.getElementById("description");
+
+                            let isValid = true;
+
+                            if (nameInput.value.trim() === "") {
+                                isValid = false;
+                                alert("Lütfen isim alanını boş bırakmayınız!");
+                            }
+
+                            if (descriptionInput.value.trim() === "") {
+                                isValid = false;
+                                alert("Lütfen açıklama alanını boş bırakmayınız!");
+                            }
+
+                            if (!isValid) {
+                                event.preventDefault(); // Geçerli değilse formu göndermeyi engelle
+                            } else {
+                                // Formu sunucuya gönderme işlemi veya başka işlemler
+                                // ...
+
+
+                            }
+                        });
+                    });
+
+
+
+                    // Modal işlemleri
+                    const closeModalBtn = document.getElementById("closeModalBtn");
+                    const openModalBtn = document.getElementById("openModalBtn");
+                    const modal = document.querySelector(".foto_ekleme_modal");
+                    const modalContent = modal.querySelector(".dbmodal"); // Modal içeriği
+
+                    closeModalBtn.addEventListener("click", function () {
+                        modal.style.display = "none"; // Modalı kapat
+                    });
+
+                    openModalBtn.addEventListener("click", function () {
+                        modal.style.display = "flex"; // Modal görünür hale getir
+                    });
+
+                    window.addEventListener("click", function (event) {
+                        if (event.target === modal) {
+                            modal.style.display = "none";
+                        }
+                    });
+
+                    document.addEventListener("DOMContentLoaded", function () {
+                        modal.style.display = "none"; // Sayfa yüklendiğinde modalı gizle
+                    });
+
+                    // Sayfa yüklendiğinde modalı ortala
+                    window.addEventListener("load", function () {
+                        centerModal();
+                    });
+
+
+
+
+
+                </script>

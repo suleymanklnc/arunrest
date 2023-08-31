@@ -3,7 +3,7 @@ import Photo from "../models/photoModel.js";
 import User from "../models/userModel.js";
 
 const getIndexPage = async (req, res) => {
-  const photos = await Photo.find().sort({ uploadedAt: -1 }).limit(3);
+  const photos = await Photo.find().sort({ uploadedAt: -1 }).limit(6);
 
   const numOfUser = await User.countDocuments({});
 
@@ -17,9 +17,18 @@ const getIndexPage = async (req, res) => {
   });
 };
 
-const getAboutPage = (req, res) => {
+const getAboutPage = async (req, res) => {
+  const photos = await Photo.find().sort({ uploadedAt: -1 }).limit(3);
+
+  const numOfUser = await User.countDocuments({});
+
+  const numOfPhotos = await Photo.countDocuments({});
+
   res.render("about", {
     link: "about",
+    photos,
+    numOfUser,
+    numOfPhotos,
   });
 };
 
@@ -48,6 +57,106 @@ const getContactPage = (req, res) => {
   });
 };
 
+const getProfilePage = async (req, res) => {
+  const userId = res.locals.user._id;
+  const user = await User.findById(userId);
+  const numOfFollowers = await User.countDocuments({ followers: userId });
+  const numOfFollowings = await User.countDocuments({ followings: userId });
+
+  res.render("profile", {
+    link: "profile",
+    numOfFollowers,
+    numOfFollowings,
+    user,
+  });
+};
+
+
+
+
+
+
+const getPostsPage = async (req, res) => {
+  const photos = await Photo.find().sort({ uploadedAt: -1 });
+  const numOfUser = await User.countDocuments({});
+  const numOfPhotos = await Photo.countDocuments({});
+
+  const userPhotoCount = await Photo.countDocuments({
+    user: res.locals.user._id,
+  });
+
+  res.render("posts", {
+    link: "posts",
+    photos,
+    numOfUser,
+    numOfPhotos,
+    userPhotoCount,
+  });
+};
+
+const getFollowersPage = async (req, res) => {
+  try {
+    const userId = res.locals.user._id;
+    const followers = await User.find({ followers: userId });
+
+    const users = await User.find({ _id: { $ne: userId } });
+
+    const photos = await Photo.find().sort({ uploadedAt: -1 });
+    const numOfUser = await User.countDocuments({});
+    const numOfPhotos = await Photo.countDocuments({});
+    const numOfFollowers = await User.countDocuments({ followers: userId });
+    const numOfFollowings = await User.countDocuments({ followings: userId });
+    const userPhotoCount = await Photo.countDocuments({ user: userId });
+
+    res.render("followers", {
+      link: "followers",
+      photos,
+      numOfUser,
+      numOfPhotos,
+      userPhotoCount,
+      users,
+      numOfFollowers,
+      numOfFollowings,
+      followers,
+    });
+  } catch (error) {
+    console.error("Error in getFollowersPage:", error);
+    res.status(500).send("An error occurred.");
+  }
+};
+
+const getFollowingsPage = async (req, res) => {
+  try {
+    const userId = res.locals.user._id;
+    const followings = await User.find({ followings: userId });
+
+    const users = await User.find({ _id: { $ne: userId } });
+
+    const photos = await Photo.find().sort({ uploadedAt: -1 });
+    const numOfUser = await User.countDocuments({});
+    const numOfPhotos = await Photo.countDocuments({});
+    const numOfFollowers = await User.countDocuments({ followers: userId });
+    const numOfFollowings = await User.countDocuments({ followings: userId });
+    const userPhotoCount = await Photo.countDocuments({ user: userId });
+
+    res.render("followings", {
+      link: "followings",
+      photos,
+      numOfUser,
+      numOfPhotos,
+      userPhotoCount,
+      users,
+      numOfFollowers,
+      numOfFollowings,
+      followings,
+    });
+  } catch (error) {
+    console.error("Error in getFollowersPage:", error);
+    res.status(500).send("An error occurred.");
+  }
+};
+
+
 const sendMail = async (req, res) => {
   const htmlTemplate = `  <!doctype html>
     <html>
@@ -69,11 +178,11 @@ const sendMail = async (req, res) => {
           }
     
           body {
-            background-color: #f6f6f6;
+            background-color: red;
             font-family: sans-serif;
             -webkit-font-smoothing: antialiased;
-            font-size: 14px;
-            line-height: 1.4;
+            font-size: 18px;
+            line-height: 1.5;
             margin: 0;
             padding: 0;
             -ms-text-size-adjust: 100%;
@@ -96,7 +205,7 @@ const sendMail = async (req, res) => {
           ------------------------------------- */
     
           .body {
-            background-color: #f6f6f6;
+            background-color: blue;
             width: 100%; 
           }
     
@@ -123,8 +232,8 @@ const sendMail = async (req, res) => {
               HEADER, FOOTER, MAIN
           ------------------------------------- */
           .main {
-            background: #ffffff;
-            border-radius: 3px;
+            background: yellow;
+            border-radius: 15px;
             width: 100%; 
           }
     
@@ -214,4 +323,8 @@ export {
   getLogout,
   getContactPage,
   sendMail,
+  getProfilePage,
+  getPostsPage,
+  getFollowersPage,
+  getFollowingsPage,
 };

@@ -10,9 +10,6 @@ import { checkUser } from "./middlewares/authMiddleware.js";
 import fileUpload from "express-fileupload";
 import { v2 as cloudinary } from "cloudinary";
 
-
-
-
 dotenv.config();
 
 cloudinary.config({
@@ -21,18 +18,14 @@ cloudinary.config({
     api_secret: process.env.CLOUD_API_SECRET,
 })
 
-
-//connection to the db
+// connection to the db
 conn();
 
 const app = express();
 const port = process.env.PORT;
 
-
-//ejs template engine
 app.set('view engine', 'ejs');
 
-//static files middleware
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -42,14 +35,11 @@ app.use(methodOverride("_method", {
     methods: ['POST', 'GET'],
 }));
 
-
-//routes
 app.use("*", checkUser);
 app.use("/", pageRoute);
 app.use("/photos", photoRoute);
 app.use('/users', userRoute);
 
-
 app.listen(port, () => {
-    console.log(`àpplication running on port : ${port}`);//sonra silinecek
+    console.log(`Application running on port : ${port}`);
 });

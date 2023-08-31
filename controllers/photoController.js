@@ -2,6 +2,8 @@ import Photo from "../models/photoModel.js";
 import { v2 as cloudinary } from "cloudinary";
 import fs from "fs";
 
+
+
 const createPhoto = async (req, res) => {
   const result = await cloudinary.uploader.upload(
     req.files.image.tempFilePath,
@@ -18,6 +20,7 @@ const createPhoto = async (req, res) => {
       user: res.locals.user._id,
       url: result.secure_url,
       image_id: result.public_id,
+      uploadedBy: res.locals.user.username,
     });
 
     fs.unlinkSync(req.files.image.tempFilePath);
@@ -31,18 +34,36 @@ const createPhoto = async (req, res) => {
   }
 };
 
+const getPhotoDetails = async (req, res) => {
+  try {
+    const photoId = req.params.photoId;
+    const photo = await Photo.findById(photoId).populate("user");
+
+    if (!photo) {
+      return res.status(404).json({ message: "Photo not found" });
+    }
+
+    const photoDetails = {
+      url: photo.url,
+      username: photo.user.username,
+    };
+
+    res.json(photoDetails);
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
 const getAllPhotos = async (req, res) => {
   try {
-    const photos = res.locals.user
-      ? await Photo.find({ user: { $ne: res.locals.user._id } })
-      : await Photo.find({});
+    const photos = await Photo.find({});
     res.status(200).render("photos", {
       photos,
       link: "photos",
     });
   } catch (error) {
     res.status(500).json({
-      succeded: false,
+      succeeded: false,
       error,
     });
   }
@@ -126,4 +147,11 @@ const updatePhoto = async (req, res) => {
   }
 };
 
-export { createPhoto, getAllPhotos, getAPhoto, deletePhoto, updatePhoto };
+export {
+  createPhoto,
+  getAllPhotos,
+  getAPhoto,
+  deletePhoto,
+  updatePhoto,
+  getPhotoDetails,
+};
