@@ -26,14 +26,23 @@
                      <div class="postscard-header">
                         <img class="postsuser-avatar" src="<%= photo.url %>" alt="User Avatar">
                         <div>
-                           <a class="postsuser-name" href="/photos/<%= photo._id %>">
+
+
+                           <a class="postsuser-name"
+                              href="<%= photo.user.equals(user._id) ? '/users/dashboard' : '/users/' + photo.user._id %>">
                               <%= photo.uploadedBy %>
                            </a>
+
+
                         </div>
                      </div>
                      <img class="postscard-image " src="<%= photo.url %>" alt="Card Image">
                      <div class="photo-description">
-                        <p>
+                        <p style="width: 100%;
+                        color: #333; font-family: sans-serif;
+                         font-size: 18px;
+                         text-align: center;
+                         font-weight: 900;">
                            <%= photo.description %>
                         </p>
                      </div>

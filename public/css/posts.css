@@ -49,6 +49,14 @@
   text-decoration: none;
 }
 
+.postscard-description{
+  font-size: 18px;
+  font-family: sans-serif;
+  font-weight: bolder;
+  color: #333;
+  text-decoration: none;
+}
+
 .postscard-image {
   width: 100%;
   height: auto;

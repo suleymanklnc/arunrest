@@ -11,7 +11,9 @@
           <% followings.forEach(following=> { %>
             <div class="followerscard">
               <div class="followerscard-header">
-                <img class="followersuser-avatar" src="<%= following.avatarUrl %>" alt="User Avatar">
+                <img class="followersuser-avatar"
+                  src="https://marketplace.canva.com/EAFfyNv3EC4/2/0/1600w/canva-orange-black-modern-facebook-profile-picture-17RW-gVJo5k.jpg"
+                  alt="User Avatar">
                 <div><a class="followersuser-name" href="/users/<%= following._id %>">
                     <%= following.username %>
                   </a></div>
@@ -29,7 +31,10 @@
                     </div>
                     <% }); %>
                       <% } else { %>
-                        <p style="font-family: sans-serif; font-size: 16px; color: crimson;">this account doeasn't have photos.</p>
+                        <p style="font-family: sans-serif; font-size: 16px; color: crimson;">
+                          Hello ı am  <%= following.itsname %>
+                            <%= following.itssurname %>
+                        </p>
                         <% } %>
               </div>
             </div>
