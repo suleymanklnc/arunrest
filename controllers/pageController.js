@@ -9,7 +9,9 @@ const getIndexPage = async (req, res) => {
 
   const numOfPhotos = await Photo.countDocuments({});
 
-  res.render("index", {
+  
+
+  res.render("photos", {
     link: "index",
     photos,
     numOfUser,
@@ -70,11 +72,6 @@ const getProfilePage = async (req, res) => {
     user,
   });
 };
-
-
-
-
-
 
 const getPostsPage = async (req, res) => {
   const photos = await Photo.find().sort({ uploadedAt: -1 });
@@ -156,137 +153,90 @@ const getFollowingsPage = async (req, res) => {
   }
 };
 
-
 const sendMail = async (req, res) => {
-  const htmlTemplate = `  <!doctype html>
-    <html>
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Simple Transactional Email</title>
-        <style>
-          /* -------------------------------------
-              GLOBAL RESETS
-          ------------------------------------- */
-          
-          /*All the styling goes here*/
-          
+  const htmlTemplate = `  <!DOCTYPE html>
+  <html>
+  <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Stilize Email</title>
+      <style>
+          /* Genel Resetler */
           img {
-            border: none;
-            -ms-interpolation-mode: bicubic;
-            max-width: 100%; 
+              border: none;
+              -ms-interpolation-mode: bicubic;
+              max-width: 100%;
           }
-    
+  
           body {
-            background-color: red;
-            font-family: sans-serif;
-            -webkit-font-smoothing: antialiased;
-            font-size: 18px;
-            line-height: 1.5;
-            margin: 0;
-            padding: 0;
-            -ms-text-size-adjust: 100%;
-            -webkit-text-size-adjust: 100%; 
+              background-color: #f5f5f5;
+              font-family: Arial, sans-serif;
+              font-size: 16px;
+              line-height: 1.6;
+              margin: 0;
+              padding: 0;
+              -ms-text-size-adjust: 100%;
+              -webkit-text-size-adjust: 100%;
           }
-    
+  
           table {
-            border-collapse: separate;
-            mso-table-lspace: 0pt;
-            mso-table-rspace: 0pt;
-            width: 100%; }
-            table td {
-              font-family: sans-serif;
-              font-size: 14px;
-              vertical-align: top; 
+              border-collapse: collapse;
+              mso-table-lspace: 0pt;
+              mso-table-rspace: 0pt;
+              width: 100%;
           }
-    
-          /* -------------------------------------
-              BODY & CONTAINER
-          ------------------------------------- */
-    
-          .body {
-            background-color: blue;
-            width: 100%; 
+  
+          table td {
+              vertical-align: top;
           }
-    
-          /* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
+  
+          /* Ana İçerik Kutusu */
           .container {
-            display: block;
-            margin: 0 auto !important;
-            /* makes it centered */
-            max-width: 580px;
-            padding: 10px;
-            width: 580px; 
+              background-color: #ffffff;
+              border-radius: 5px;
+              padding: 20px;
           }
-    
-          /* This should also be a block element, so that it will fill 100% of the .container */
-          .content {
-            box-sizing: border-box;
-            display: block;
-            margin: 0 auto;
-            max-width: 580px;
-            padding: 10px; 
+  
+          /* Başlık */
+          .header {
+              text-align: center;
+              padding: 20px 0;
           }
-    
-          /* -------------------------------------
-              HEADER, FOOTER, MAIN
-          ------------------------------------- */
-          .main {
-            background: yellow;
-            border-radius: 15px;
-            width: 100%; 
+  
+          /* İletişim Bilgileri */
+          .contact-info {
+              margin-top: 20px;
           }
-    
-          .wrapper {
-            box-sizing: border-box;
-            padding: 20px; 
+  
+          /* Mesaj İçeriği */
+          .message-content {
+              margin-top: 20px;
           }
-    
-          .content-block {
-            padding-bottom: 10px;
-            padding-top: 10px;
-          }
-    
-    
-        </style>
-      </head>
-      <body>
-        <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
+      </style>
+  </head>
+  <body>
+      <table role="presentation" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td>&nbsp;</td>
-            <td class="container">
-              <div class="content">
-    
-                <!-- START CENTERED WHITE CONTAINER -->
-                <table role="presentation" class="main">
-    
-                  <!-- START MAIN CONTENT AREA -->
-                  <tr>
-                    <td class="wrapper">
-                      <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                        <tr>
-                          <td>
-                            <p>Email: ${req.body.email}</p>
-                            <p>Name: ${req.body.name}</p>
-                            <p>Message: ${req.body.message}</p>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-    
-                <!-- END MAIN CONTENT AREA -->
-                </table>
-                <!-- END CENTERED WHITE CONTAINER -->
-    
-    
-              </div>
-            </td>
-            <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="container">
+                 
+                  <div class="contact-info">
+               
+                      <h2>İletişim Bilgileri</h2>
+                      <p><strong>Username : </strong>${req.body.name}</p>
+                      <p><strong>E-posta : </strong> ${req.body.email}</p>
+                  </div>
+                  <div class="message-content">
+                      <h2>Mesaj</h2>
+                      <p>${req.body.message}</p>
+                  </div>
+              </td>
+              <td>&nbsp;</td>
           </tr>
-        </table>
-      </body>
-    </html>
+      </table>
+  </body>
+  </html>
+  
     `;
 
   try {

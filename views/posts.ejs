@@ -13,11 +13,12 @@
 
                         <div class="postscard-header">
                            <img class="postsuser-avatar" src="<%= photo.url %>" alt="User Avatar">
-                           <div><a class="postsuser-name" href="/photos/<%= photo._id %>">
+                           <div><a class="postsuser-name">
                                  <%= photo.uploadedBy%>
                               </a></div>
                         </div>
-                        <img class="postscard-image" src="<%= photo.url %>" alt="Card Image">
+                        <a href="/photos/<%= photo._id %>"><img class="postscard-image" src="<%= photo.url %>"
+                              alt="Card Image"></a>
                         <div class="postscard-description">
 
                            <%= photo.description %>

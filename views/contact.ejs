@@ -7,7 +7,7 @@
     <!-- loader  -->
 
     <div class="loader_bg">
-      <div class="loader"><img src="images/loading2.gif" alt="#" /></div>
+      <div class="loader"><img src="images/loading3.gif" alt="#" /></div>
     </div>
 
     <!-- end loader -->
@@ -24,8 +24,8 @@
 
       <form id="request" class="contactform" action="/contact" method="POST">
         <div style="display: none;" class="confirmmsge" id="sendMessage"></div>
-        <input class="contactinput" placeholder="Username" type="text" name="name" required>
-        <input class="contactinput" placeholder="E-mail" type="email" name="email" required>
+        <input class="contactinput" placeholder="Username" id="usernameField" type="text" name="name" required readonly>
+        <input class="contactinput" placeholder="E-mail" id="emailField" type="email" name="email" required readonly>
         <textarea class="contacttextarea" placeholder="Message" name="message" required></textarea>
         <button class="contactbtn" type="submit">Send</button>
       </form>
@@ -34,10 +34,21 @@
       <!-- end contact -->
       <!-- end footer -->
 
+      <script>
+
+        var username = "<%= user.username %>";
+        var email = "<%= user.email %>";
+
+        document.getElementById("usernameField").value = username;
+        document.getElementById("emailField").value = email;
+
+      </script>
 
 
 
       <script>
+
+
         const form = document.querySelector('form');
         const sendMessage = document.querySelector('#sendMessage');
 
@@ -104,19 +115,23 @@
             if (data.succeeded) {
               sendMessage.textContent = "Mesajınız başarılı bir şekilde iletildi.";
               sendMessage.style.display = "block";
+              sendMessage.style.color = "red";
 
               setTimeout(() => {
                 sendMessage.style.display = "none";
 
-                form.reset(); // Formu sıfırla
+                // Sadece mesaj alanını sıfırla
+                form.message.value = "";
 
-              }, 5000);
+              }, 1000);
             }
 
           } catch (err) {
             console.log("ERR::", err);
           }
         });
+
+
       </script>
 
 

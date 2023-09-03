@@ -2,109 +2,98 @@
 
   <!-- body -->
 
-  <body class="main-layout inner_page">
-    <!-- loader  -->
-    <div class="loader_bg">
-      <div class="loader"><img src="/images\loading2.gif" alt="#" /></div>
-    </div>
-    <!-- end loader -->
+  <body style="background-color: #f5f5f5;">
+
+
 
     <!-- header -->
     <%- include("partials/_menu") %>
 
       <!-- end header inner -->
-      <!-- about -->
-      <div class="about">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="titlepage text_align_left">
 
-                <h3 style="font-size: 24px !important;">
-                  <%=photo.name %>
-                </h3>
-                <p>
-                  <%=photo.description %>
-                </p>
-                <a class="read_more" href="/users/<%=photo.user._id %>">
-                  <%=photo.user.username %>
-                </a>
 
-                <% if (isOwner){ %>
-                  <div style="margin-top: 30px ;">
-                    <ul style="display: flex; justify-content: space-between;">
-                      <li><button style="min-width: 266px;" class="read_more" data-toggle="modal"
-                          data-target="#updateModal">Update</button></li>
-
-                      <li><a style="min-width: 266px;" class="read_more" href="/photos/<%= photo._id %>/?_method=DELETE"
-                          onclick="return confirm('silmek istediğine eminmisin kardeş')">Delete</a></li>
-                    </ul>
-                  </div>
-                  <% } %>
-
-                 
-              </div>
+      <!-- Fotoğraf Detayı -->
+      <div class="forphoto-photo-detail">
+        <div class="forphoto-photo-info">
+        
+          <% if (isOwner) { %>
+            <div class="forphoto-photo-actions">
+              <ul>
+                <li>
+                  <button class="forphoto-update-button" data-toggle="modal" data-target="#updateModal" id="openModalButton">Update</button>
+                </li>
+                <li>
+                  <a style="display: flex; align-items: center; justify-content: center;" href="/photos/<%= photo._id %>/?_method=DELETE"
+                    onclick="return confirm('Silmek istediğine emin misin?')">Delete</a>
+                </li>
+              </ul>
             </div>
-            <div class="col-md-6">
-              <div class="about_img">
-                <figure><img style="z-index: 1;" src="<%=photo.url %>" alt="<%=photo.name %>" /></figure>
-              </div>
-            </div>
-          </div>
+            <% } %>
+        </div>
+        <div class="forphoto-photo-image">
+          <figure><img src="<%= photo.url %>" alt="<%= photo.name %>"></figure>
         </div>
       </div>
-      <!-- end about -->
-      <!-- end footer -->
+      <!-- End Fotoğraf Detayı -->
 
-      <div id="updateModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
-        aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div style="margin-top: 50px; margin-bottom: 50px;" class="container">
-              <div class="row">
-                <div class="col-md-12 ">
-                  <div class="text_align_center">
-                    <h2 style="
-font-size: 30px;
-margin-bottom: 20px;
-color: #D43A8E;
-">Add New Photo</h2>
+     
+      <!-- Update Modal -->
+      <div id="updateModal" class="forphoto-modal">
+        <div class="forphoto-modal-dialog">
+          <div class="forphoto-modal-content">
+            <button id="closeModalButton" class="forphoto-close-button" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="forphoto-modal-body">
+              <div class="forphoto-modal-header">
+                <h2>Photo Settings</h2>
+              </div>
+              <div class="forphoto-modal-form">
+                <form id="request" method="POST" action="/photos/<%= photo._id %>?_method=PUT"
+                  enctype="multipart/form-data">
+                  <div class="forphoto-form-group">
+                    <input value="<%= photo.name %>" placeholder="Name" type="text" name="name" readonly>
                   </div>
-                </div>
-                <div class="col-md-10 offset-md-1">
-                  <form id="request" class="main_form" method="POST" action="/photos/<%=photo._id %>?_method=PUT"
-                    enctype="multipart/form-data">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <input value="<%=photo.name %>" class="form_control" placeholder="Name" type="text" name="name">
-                      </div>
-                      <div class="col-md-12">
-                        <textarea name="description" style="height: 150px;" class="form_control"
-                          placeholder="Description" rows="5"><%=photo.description %></textarea>
-                      </div>
-
-                      <div style="margin-bottom: 20px ;" class="col-md-12">
-                        <input type="file" name="image" class="form-control-file">
-                      </div>
-
-                      <div class="col-md-12">
-                        <div class="group_form">
-                          <button class="read_more">Update Photo</button>
-                        </div>
-                      </div>
+                  <div class="forphoto-form-group">
+                    <textarea name="description" style="height: 150px;" placeholder="Description"
+                      rows="5"><%= photo.description %></textarea>
+                  </div>
+                  <div class="forphoto-form-group">
+                    <input type="file" name="image">
+                  </div>
+                  <div class="forphoto-form-group">
+                    <div class="forphoto-submit-button">
+                      <button>Update Photo</button>
                     </div>
-                  </form>
-                </div>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+
+      <script>
+        // Modalı açmak için düğme tıklamasını dinle
+        document.getElementById("openModalButton").addEventListener("click", function () {
+          document.getElementById("updateModal").style.display = "block";
+        });
+
+        // Modalı kapatmak için kapatma düğmesi veya dışarı tıklama olayını dinle
+        document.getElementById("closeModalButton").addEventListener("click", function () {
+          document.getElementById("updateModal").style.display = "none";
+        });
+
+        // Dışarıya tıklama ile modalı kapatma
+        window.addEventListener("click", function (event) {
+          var modal = document.getElementById("updateModal");
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        });
+      </script>
+
 
 
       <%- include("partials/_footer") %>

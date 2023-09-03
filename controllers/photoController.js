@@ -60,7 +60,7 @@ const getAllPhotos = async (req, res) => {
     const photos = await Photo.find({});
     res.status(200).render("photos", {
       photos,
-      link: "photos",
+      link: "index",
     });
   } catch (error) {
     res.status(500).json({

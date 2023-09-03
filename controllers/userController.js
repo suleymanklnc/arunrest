@@ -49,6 +49,7 @@ const getUserDetails = (user) => {
   return {
     _id: user._id,
     username: user.username,
+    email: user.email,
     // Diğer kullanıcı detayları da buraya eklenebilir
   };
 };
@@ -95,16 +96,6 @@ const loginUser = async (req, res) => {
     });
   }
 };
-
-
-
-
-
-
-
-
-
-
 
 const createToken = (userId) => {
   return jwt.sign({ userId }, process.env.JWT_SECRET, {

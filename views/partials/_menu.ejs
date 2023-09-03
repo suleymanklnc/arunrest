@@ -1,33 +1,33 @@
- <!--menu alanı-->
+<!--menu alanı-->
 
- <header class="dbheader">
-   <div class="dblogo">
-     <a href="/">WordsEmpire</a>
-   </div>
-   <nav class="dbmenu">
-       <ul>
-           <li><a class="<%= link ==='index' && 'active' %>" href="/">Home</a></li>
-           <li><a class="<%= link ==='about' && 'active' %>" href="/about">About</a></li>
-           <li><a class="<%= link ==='contact' && 'active' %>" href="/contact">Contact</a></li>
+<header class="dbheader">
+  <div class="dblogo">
+    <a href="/">Arunrest</a>
+  </div>
+  <nav class="dbmenu">
+    <ul>
 
+      <% if(user) { %>
+        <li><a class="<%= link ==='index' && 'active' %>" href="/">Home</a></li>
+        <li><a class="<%= link ==='users' && 'active' %>" href="/users">Users</a></li>
+        <li><a class="<%= link ==='about' && 'active' %>" href="/about">About</a></li>
+        <li><a class="<%= link ==='contact' && 'active' %>" href="/contact">Contact</a></li>
 
-           <% if(user) { %>
-              <li><a class="<%= link ==='photos' && 'active' %>" href="/photos">Posts</a></li>
-              <li><a class="<%= link ==='users' && 'active' %>" href="/users">Users</a></li>
-              <li><a class="<%= link ==='dashboard' && 'active' %>" href="/users/dashboard">My Profile</a></li>
-              <li><a href="/logout">Log-out</a></li>
-              <% } else { %>
-                 <li><a class="<%= link ==='register' && 'active' %>" href="/register">Register</a></li>
-                 <li><a class="<%= link ==='login' && 'active' %>" href="/login">Log-in</a></li>
-                 <% } %>
+        
+        
+        <li><a class="<%= link ==='dashboard' && 'active' %>" href="/users/dashboard">Profile</a></li>
+        <li><a href="/logout">Log-out</a></li>
+        <% } else { %>
 
-
+          <% } %>
 
 
-  
-        </ul>
-   </nav>
- </header>
+
+
+
+    </ul>
+  </nav>
+</header>
 
 
 
