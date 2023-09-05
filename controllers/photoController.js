@@ -9,7 +9,7 @@ const createPhoto = async (req, res) => {
     req.files.image.tempFilePath,
     {
       use_filename: true,
-      folder: "lenslight_tr",
+      folder: "arunrest",
     }
   );
 
@@ -124,7 +124,7 @@ const updatePhoto = async (req, res) => {
         req.files.image.tempFilePath,
         {
           use_filename: true,
-          folder: "lenslight_tr",
+          folder: "arunrest",
         }
       );
 

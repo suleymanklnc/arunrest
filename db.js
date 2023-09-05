@@ -3,11 +3,11 @@ import mongoose from "mongoose";
 
 const conn = () => {
     mongoose.connect(process.env.DB_URL, {
-        dbName: "lensLight_tr",
+        dbName: "arunrest",
         useNewUrlParser: true,
         useUnifiedTopology: true,
     }).then(()=>{
-        console.log("connected to the DB succesfully")
+        console.log("connected to the DB arunrest succesfully")
     })
 };
 
