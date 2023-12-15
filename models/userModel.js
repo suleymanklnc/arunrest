@@ -4,21 +4,8 @@ import validator from "validator";
 
 const { Schema } = mongoose;
 
-const username = 'suleyman';
 
-User.findOneAndUpdate(
-  { username: username },
-  { isVerified: true },
-  { new: true },
-  (err, user) => {
-    if (err) {
-      console.error('Hata:', err);
-    } else {
-      console.log('Kullanıcı doğrulandı:', user);
-      // Kullanıcı doğrulandıktan sonra ilgili işlemleri gerçekleştirebilirsiniz.
-    }
-  }
-);
+
 
 const userSchema = new Schema(
   {
@@ -33,10 +20,7 @@ const userSchema = new Schema(
         },
         message: "Kullanıcı adında boşluk karakteri kullanamazsınız",
       },
-      isVerified: {
-      type: Boolean,
-      default: false // Yeni kullanıcılar için varsayılan olarak doğrulanmamış
-    },
+    
     },
     itsname: {
       type: String,
