@@ -4,6 +4,22 @@ import validator from "validator";
 
 const { Schema } = mongoose;
 
+const username = 'suleyman';
+
+User.findOneAndUpdate(
+  { username: username },
+  { isVerified: true },
+  { new: true },
+  (err, user) => {
+    if (err) {
+      console.error('Hata:', err);
+    } else {
+      console.log('Kullanıcı doğrulandı:', user);
+      // Kullanıcı doğrulandıktan sonra ilgili işlemleri gerçekleştirebilirsiniz.
+    }
+  }
+);
+
 const userSchema = new Schema(
   {
     username: {
@@ -17,6 +33,10 @@ const userSchema = new Schema(
         },
         message: "Kullanıcı adında boşluk karakteri kullanamazsınız",
       },
+      isVerified: {
+      type: Boolean,
+      default: false // Yeni kullanıcılar için varsayılan olarak doğrulanmamış
+    },
     },
     itsname: {
       type: String,
@@ -95,6 +115,10 @@ const userSchema = new Schema(
 userSchema.pre("save", function (next) {
   const user = this;
 
+  if (!user.isModified("password")) {
+    return next();
+  }
+  
   bcrypt.hash(user.password, 10, (err, hash) => {
     user.password = hash;
 
